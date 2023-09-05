@@ -1,0 +1,52 @@
+¡Claro! Vamos a desglosar el proyecto "push_swap" en pasos claros y secuenciales para llevarlo a cabo de manera efectiva.
+
+### Lista de Pasos:
+
+1. **Entendimiento del Problema**:
+   - Asegúrate de que comprendes cómo funcionan todos los comandos (sa, sb, pa, etc.).
+   - Familiarízate con la estructura de datos de la pila (stack) si aún no lo has hecho.
+
+2. **Configuración del Entorno**:
+   - Crea un nuevo directorio para el proyecto.
+   - Si vas a usar tu librería "libft", colócala en el directorio raíz del proyecto.
+   - Configura un `Makefile` básico para compilar el proyecto.
+
+3. **Estructura de Datos y Utilidades**:
+   - Implementa una estructura de datos para las pilas `a` y `b`.
+   - Escribe funciones auxiliares para manipular las pilas (push, pop, peek, etc.).
+
+4. **Implementación de Operaciones**:
+   - Implementa las operaciones dadas (sa, sb, pa, etc.) como funciones.
+   - Asegúrate de que cada operación modifica las pilas de acuerdo a su definición.
+
+5. **Validación de Entrada**:
+   - Escribe una función para validar los argumentos de entrada.
+   - La función debe comprobar que todos los argumentos son números enteros, que no hay duplicados y que los números están dentro del rango permitido.
+
+6. **Algoritmo de Ordenación**:
+   - Comienza con un algoritmo simple, como la ordenación por selección, y adapta las operaciones de la pila para ordenar la lista.
+   - Una vez que tengas una versión funcional, puedes investigar algoritmos más eficientes para minimizar el número de operaciones.
+
+7. **Output y Manejo de Errores**:
+   - Asegúrate de que tu programa imprima las operaciones en el formato correcto.
+   - Gestiona los errores con cuidado y muestra "Error" en la salida de errores estándar cuando sea necesario.
+
+8. **Optimización**:
+   - Una vez que tengas una versión funcional del programa, intenta optimizar el número de operaciones. Puedes investigar diferentes estrategias y algoritmos para mejorar la eficiencia.
+
+9. **Pruebas**:
+   - Crea conjuntos de pruebas con diferentes tamaños y configuraciones para asegurarte de que tu programa funciona correctamente en todos los casos.
+   - Utiliza el binario `checker_OS` proporcionado para validar la corrección de tu solución.
+
+10. **Documentación y Comentarios**:
+   - Añade comentarios claros y descriptivos a tu código para explicar cómo funciona.
+   - Si es necesario, escribe una breve documentación sobre cómo usar tu programa y cualquier consideración especial.
+
+11. **Revisión Final**:
+   - Revisa tu código para asegurarte de que cumple con todos los requisitos.
+   - Comprueba que no haya fugas de memoria y que tu programa gestione todos los posibles errores.
+   - Haz una última compilación con `Makefile` y asegúrate de que todo funcione sin problemas.
+
+Una vez que hayas completado todos estos pasos, deberías tener una implementación sólida y eficiente del proyecto "push_swap". 
+
+Empecemos con el primer paso: **Entendimiento del Problema**. ¿Necesitas alguna aclaración o detalle adicional sobre cómo funcionan los comandos o las pilas en general?
