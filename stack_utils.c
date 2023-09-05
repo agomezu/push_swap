@@ -6,7 +6,7 @@
 /*   By: agomez-u <agomez-u@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 18:11:04 by agomez-u          #+#    #+#             */
-/*   Updated: 2023/09/03 18:28:40 by agomez-u         ###   ########.fr       */
+/*   Updated: 2023/09/05 18:38:00 by agomez-u         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,20 @@ int	peek(t_stack *stack)
 	if (!stack || !stack->top)
 		return (INT_MIN);
 	return (stack->top->value);
+}
+
+// Stack length (para contar el tamaño de una lista)
+int	stack_length(t_stack *stack)
+{
+	t_node	*current;
+	int	count;
+
+	count = 0;
+	current = stack->top;
+	while (current)
+	{
+		current = current->next;
+		count++;
+	}
+	return (count);
 }
