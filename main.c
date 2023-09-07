@@ -12,6 +12,20 @@
 
 #include "push_swap.h"
 
+void	print_final_result(t_stack *a)
+{
+	t_node	*current;
+
+	current = a->top;
+	printf("Final sorted Stack A: ");
+	while (current)
+	{
+		printf("%d ", current->value);
+		current = current->next;
+	}
+	printf("\n");
+}
+
 void	execute_and_print_op(char *op, t_stack *a, t_stack *b)
 {
 	if (ft_strncmp(op, "sa", 3) == 0)
@@ -44,7 +58,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	int	i;
+	int		i;
 
 	if (argc == 1)
 		return (0);
@@ -55,12 +69,16 @@ int	main(int argc, char **argv)
 	}
 	a = init_stack();
 	b = init_stack();
-	i = 0;
-	while (i++ < argc)
-		push(a, ft_atoi(argv[i]));	
-
-	sort_advanced(a, b);
-
+	i = 1;
+	while (i < argc)
+	{
+		push(a, ft_atoi(argv[i]));
+		i++;
+	}
+	// Algoritmo de ordenación
+	sort_insertion(a, b);
+	// Imprime el resultado final
+	print_final_result(a);
 	// Limpieza
 	while (a->top)
 		pop(a);
@@ -68,6 +86,5 @@ int	main(int argc, char **argv)
 		pop(b);
 	free(a);
 	free(b);
-
 	return (0);
 }

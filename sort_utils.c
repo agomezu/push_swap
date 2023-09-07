@@ -89,51 +89,54 @@ int	get_median(t_stack *stack, int size)
 	return (median);
 }
 
-// Algoritmos de ordenación avanzados
-void	quicksort_stack(t_stack *a, t_stack *b, int size)
+void	sort_half(t_stack *a, t_stack *b, int size, int dir)
 {
-	int	median;
 	int	count;
+	int	median;
 	int	i;
 
 	count = 0;
-	if (stack_is_sorted(a) || size <= 1)
-		return ;
 	median = get_median(a, size);
 	i = 0;
 	while (i < size)
 	{
-		if (a->top->value < median)
+		if ((dir == 1 && a->top->value < median) || (dir == -1 && a->top->value > median))
 		{
-			execute_and_print_op("pb", a, b);	
-			print_stack(a, 'A');
-			print_stack(b, 'B');
+			execute_and_print_op("pb", a, b);
 			count++;
 		}
 		else
-		{
 			execute_and_print_op("ra", a, b);
-			print_stack(a, 'A');
-			print_stack(b, 'B');
-		}
 		i++;
 	}
-	quicksort_stack(b, a, count);
-	while (count-- > 0)
+	if (dir == 1)
 	{
-		execute_and_print_op("pa", a, b);
-		print_stack(a, 'A');
-		print_stack(a, 'B');
+		quicksort_stack(b, a, count);
+		while (count-- > 0)
+			execute_and_print_op("pa", a, b);
 	}
-	quicksort_stack(a, b, size - count);
+	else
+		quicksort_stack(a, b, size - count);
+}
+
+// Algoritmos de ordenación avanzados
+void	quicksort_stack(t_stack *a, t_stack *b, int size)
+{
+	if (size <= 1 || stack_is_sorted(a))
+		return ;
+	sort_half(a, b, size, 1);	// Mueve la mitad inferior a la pila b y ordena
+	sort_half(a, b, size / 2, -1);	// Ordena la mitad superior en la pila a
 }
 
 void	sort_advanced(t_stack *a, t_stack *b)
 {
+	if (stack_is_sorted(a))
+		return ;
 	quicksort_stack(a, b, stack_length(a));
 }
 
-/*
+// Simplier one. This is the one we're using!!!
+
 int	find_min(t_stack *a, int *index)
 {
 	t_node	*current;
@@ -160,6 +163,37 @@ int	find_min(t_stack *a, int *index)
 	return (min);
 }
 
+void	sort_insertion(t_stack *a, t_stack *b)
+{
+	int	index;
+	int	len;
+	int	rotations;
+
+	while (!stack_is_sorted(a))
+	{
+		find_min(a, &index);
+		rotations = index;
+		len = stack_length(a);
+		
+		if (index <= len / 2)
+		{
+			while (rotations--)
+				execute_and_print_op("ra", a, NULL);
+		}
+		else
+		{
+			rotations = len - index;
+			while (rotations--)
+				execute_and_print_op("rra", a, NULL);
+		}
+		execute_and_print_op("pb", a, b);
+	}
+
+	while (b->top)
+		execute_and_print_op("pa", a, b);
+}
+
+/*
 void	sort_selection(t_stack *a, t_stack *b)
 {
 	int	index;

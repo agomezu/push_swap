@@ -1,3 +1,5 @@
+/*
+ * Test main() function for previous implementations
 #include <stdio.h>
 #include "push_swap.h"
 
@@ -32,3 +34,4 @@ int	main(int argc, char **argv)
 	free(a);
 	free(b);
 }
+*/

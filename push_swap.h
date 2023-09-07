@@ -30,7 +30,7 @@ typedef struct		s_stack
 	t_node			*top;
 }					t_stack;
 
-execute_and_print_op(char *op, t_stack *a, t_stack *b);
+void		execute_and_print_op(char *op, t_stack *a, t_stack *b);
 
 /* Prototipos de funciones para stack_utils.c */
 t_stack	*init_stack(void);
@@ -61,6 +61,7 @@ void	sort_array(int *array, int size);
 int		get_median(t_stack *stack, int size);
 void	quicksort_stack(t_stack *a, t_stack *b, int size);
 void	sort_advanced(t_stack *a, t_stack *b);
+void	sort_insertion(t_stack *a, t_stack *b);
 
 /* Funciones de debug */
 void	print_stack(t_stack *stack, char stack_name);

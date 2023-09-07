@@ -59,7 +59,7 @@ int	validate_input(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		printf("Validation input: %s\n", argv[i]);
+		// printf("Validation input: %s\n", argv[i]);
 		if (!is_integer(argv[i]))
 			return (0);
 		num = ft_atoi(argv[i]);
@@ -67,9 +67,9 @@ int	validate_input(int argc, char **argv)
 			return (0);
 		i++;
 	}
-	printf("Checking for duplicates...\n");
+	// printf("Checking for duplicates...\n");
 	if (has_duplicates(argc, argv))
 		return (0);
-	printf("Validation successful.\n");
+	// printf("Validation successful.\n");
 	return (1);
 }
