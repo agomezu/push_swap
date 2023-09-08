@@ -56,12 +56,7 @@ void	rrr(t_stack *a, t_stack *b);
 int		validate_input(int argc, char **argv);
 
 /* Prototipos de ordenación: sort_utils.c */
-int		stack_is_sorted(t_stack *stack);
-void	sort_array(int *array, int size);
-int		get_median(t_stack *stack, int size);
-void	quicksort_stack(t_stack *a, t_stack *b, int size);
-void	sort_advanced(t_stack *a, t_stack *b);
-void	sort_insertion(t_stack *a, t_stack *b);
+void	sort_using_all_operations(t_stack *a, t_stack *b);
 
 /* Funciones de debug */
 void	print_stack(t_stack *stack, char stack_name);

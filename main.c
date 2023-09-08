@@ -75,8 +75,7 @@ int	main(int argc, char **argv)
 		push(a, ft_atoi(argv[i]));
 		i++;
 	}
-	// Algoritmo de ordenación
-	sort_insertion(a, b);
+	sort_using_all_operations(a, b);
 	// Imprime el resultado final
 	print_final_result(a);
 	// Limpieza
