@@ -56,9 +56,6 @@ void	rrr(t_stack *a, t_stack *b);
 int		validate_input(int argc, char **argv);
 
 /* Prototipos de ordenación: sort_utils.c */
-void	sort_using_all_operations(t_stack *a, t_stack *b);
-
-/* Funciones de debug */
-void	print_stack(t_stack *stack, char stack_name);
+void sort_using_all_operations(t_stack *a, t_stack *b);
 
 #endif /* PUSH_SWAP_H */

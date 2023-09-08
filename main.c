@@ -75,10 +75,9 @@ int	main(int argc, char **argv)
 		push(a, ft_atoi(argv[i]));
 		i++;
 	}
+	//sort_using_all_operations(a, b);
 	sort_using_all_operations(a, b);
-	// Imprime el resultado final
 	print_final_result(a);
-	// Limpieza
 	while (a->top)
 		pop(a);
 	while (b->top)

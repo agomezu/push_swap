@@ -20,7 +20,7 @@ int find_min(t_stack *a, int *min_index) {
 
     if (!current) {
         *min_index = -1;
-        return INT_MAX; // Representa un valor vacío o un error.
+        return INT_MAX; // Represents an empty or error value.
     }
 
     min_val = current->value;
@@ -40,70 +40,62 @@ int find_min(t_stack *a, int *min_index) {
     return min_val;
 }
 
-int shortest_rotation_direction(t_stack *a, int min_val) {
+int shortest_rotation_direction(t_stack *a, int target_val) {
     t_node *current = a->top;
     int position = 0;
     int total_len = stack_length(a);
 
-    while (current && current->value != min_val) {
+    while (current && current->value != target_val) {
         position++;
         current = current->next;
     }
 
-    // Si la posición es menor o igual a la mitad del tamaño, la rotación hacia arriba es más corta.
+    // If the position is less than or equal to half the size, upward rotation is shorter.
     if (position <= total_len / 2) {
         return 1;
-    } else { // En caso contrario, la rotación hacia abajo es más corta.
+    } else { 
+        // Otherwise, downward rotation is shorter.
         return -1;
     }
 }
 
-// Encuentra el valor mínimo y la dirección de rotación
-void find_min_val_and_dir(t_stack *a, int *min_val, int *direction) {
-    int min_index;
-    *min_val = find_min(a, &min_index);
-    *direction = shortest_rotation_direction(a, *min_val);
-}
-
-// Rota A hasta que el valor mínimo esté en la parte superior
 void rotate_till_min_at_top(t_stack *a, t_stack *b, int min_val, int direction) {
     while (a->top->value != min_val) {
         if (direction == 1) {
             if (b->top && b->top->next && b->top->value < b->top->next->value) {
-                rr(a, b);
+				execute_and_print_op("rr", a, b);
             } else {
-                ra(a);
+				execute_and_print_op("ra", a, NULL);
             }
         } else {
             if (b->top && b->top->next && b->top->value < b->top->next->value) {
-                rrr(a, b);
+				execute_and_print_op("rrr", a, b);
             } else {
-                rra(a);
+				execute_and_print_op("rra", a, NULL);
             }
         }
     }
 }
 
-// Mueve todos los mínimos de A a B
 void move_mins_to_b(t_stack *a, t_stack *b) {
     int min_val, direction;
 
     while (a->top) {
-        find_min_val_and_dir(a, &min_val, &direction);
+        min_val = find_min(a, &direction);
+        direction = shortest_rotation_direction(a, min_val);
         rotate_till_min_at_top(a, b, min_val, direction);
-        pb(a, b);
+		execute_and_print_op("pb", a, b);
     }
 }
 
-// Mueve todos los valores de B de vuelta a A
 void move_all_to_a(t_stack *a, t_stack *b) {
     while (b->top) {
-        pa(a, b);
+		execute_and_print_op("pa", a, b);
     }
 }
 
-// Función principal de ordenación
 void sort_using_all_operations(t_stack *a, t_stack *b) {
-    move_mins_to_b(a, b);
+	move_mins_to_b(a, b);
     move_all_to_a(a, b);
 }
+
